@@ -1,0 +1,17 @@
+.list {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-top: 2%;
+  background-color: #D3D3D3;
+  border-radius: 3px;
+}
+
+h1 {
+  font-style: italic;
+}
+
+.salon_add {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border-bottom: 1px solid #C6BABD;
+}

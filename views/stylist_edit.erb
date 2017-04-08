@@ -1,0 +1,17 @@
+<h1>Update <%=@stylist.name() %> </h1>
+
+  <form action="/stylists/<%= @stylist.id() %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <label for="name">Rename your salon:</label>
+    <input id="name" name="name" type="text" placeholder="<%= @stylist.name() %>">
+    <label for="address">Change your salon's address:</label>
+    <input id="address" name="address" type="text" placeholder="<%= @stylist.address() %>">
+
+    <button class="btn btn-default" type="submit">Update</button>
+  </form>
+
+  <form action="/stylists/<%= @stylist.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+
+    <button class="btn btn-default" type="submit">Delete stylist</button>
+  </form>

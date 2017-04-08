@@ -1,0 +1,36 @@
+<div class="container text-center">
+  <h2> Current salons for this client </h2>
+  <h3> Client Name: <%= @client.first_name() %> <%= @client.last_name() %></h3>
+
+    <% if @client.stylists().any?() %>
+
+     <ul>
+       <% @client.stylists().each() do |stylist| %>
+         <li><%= stylist.name()%> <%= stylist.address()%></li>
+       <% end %>
+     </ul>
+
+     <% else %>
+       <p>There are no salons for this client</p>
+    <% end %>
+  <h3>Add a salon to <%= @client.first_name() %> </h3>
+   <form action="/stylists" method="post">
+     <input id="client_id" name="client_id" type="hidden" value="<%= @client.id() %>">
+
+     <div class="form-group">
+       <label for="name">Salon Name:</label>
+       <input id="name" name="name" type="text">
+     </div>
+     <div class="form-group">
+       <label for="address">Address:</label>
+       <input id="address" name="address" type="text">
+     </div>
+     <button class = "btn btn-default" type="submit">Add salon</button>
+   </form>
+</div>
+   <hr>
+
+ <div class="container text-center">
+   <button class="btn"><a href="/clients/<%= @client.id() %>/edit">Edit Client <%= @client.first_name() %></a></button>
+   <button class="btn"><a href="/">Return to Main Page</a></button>
+ </div>

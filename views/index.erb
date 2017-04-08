@@ -1,0 +1,57 @@
+<h1 class="text-center">All salons in town</h1>
+
+<div class="list text-center">
+  <% if @stylists.any?() %>
+    <ul>
+      <% @stylists.each do |stylist| %>
+        <button class="btn btn-default"><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></button>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no stylists yet!</p>
+  <% end %>
+</div>
+
+<div class="salon_add text-center">
+  <h3>Add a new salon:</h3>
+  <form class ="form-inline" action="/stylists" method="post">
+    <label for="name">Enter your stylist's name:</label>
+    <input class="form-control" id="name" name="name" type="text">
+    <label for="address">Enter your stylist's address:</label>
+    <input class="form-control" id="address" name="address" type="text">
+
+    <button class="btn btn-default" type="submit">Add stylist</button>
+  </form>
+</div>
+<h1 class="text-center">Clients</h1>
+<div class="list text-center">
+  <% if @clients.any?() %>
+    <ul class="text-center">
+      <% @clients.each do |client| %>
+      <button class="btn btn-default"><a href="/clients/<%= client.id() %>"><%= client.first_name() %> <%= client.last_name() %></a></button>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no clients in the client database yet!</p>
+  <% end %>
+</div>
+
+<div class="salon_add text-center">
+  <h3> Add clients to any stylist:</h3>
+    <form class="form-inline" action="/clients" method="post">
+      <label for="stylist_id">Select a stylist</label>
+      <select class="form-control" id='stylist_id' name='stylist_id' type='text'>
+        <% @stylists.each() do |stylist| %>
+          <option value="<%= stylist.id()%>"> <%= stylist.name() %> </option>
+        <% end %>
+      </select>
+
+      <label for="first_name">Given name of client:</label>
+      <input class="form-control" id="first_name" name="first_name" type="text">
+      <label for="last_name">Last name of client:</label>
+      <input class="form-control" id="last_name" name="last_name" type="text">
+
+      <button class="btn btn-default" type="submit">Add client</button>
+    </form>
+  </div>
+</div>
